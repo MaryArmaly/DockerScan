@@ -1,46 +1,88 @@
 {
-    "name": "ocramius/package-versions",
-    "description": "Provides efficient querying for installed package versions (no runtime IO)",
-    "type": "library",
+    "name": "composer/satis",
+    "description": "Simple Repository Generator",
+    "keywords": [
+        "package",
+        "repository",
+        "generator",
+        "static",
+        "composer"
+    ],
+    "homepage": "https://github.com/composer/satis",
+    "type": "composer-plugin",
     "license": "MIT",
     "authors": [
         {
-            "name": "Marco Pivetta",
-            "email": "ocramius@gmail.com"
+            "name": "Jordi Boggiano",
+            "email": "j.boggiano@seld.be",
+            "homepage": "https://seld.be"
+        },
+        {
+            "name": "Nils Adermann",
+            "email": "naderman@naderman.de",
+            "homepage": "https://www.naderman.de"
+        },
+        {
+            "name": "Rob Bast",
+            "email": "rob.bast@gmail.com",
+            "homepage": "https://robbast.nl"
         }
     ],
-    "require": {
-        "php":                  "~8.1.0 || ~8.2.0 || ~8.3.0",
-        "composer-runtime-api": "^2.2.0"
+    "support": {
+        "issues": "https://github.com/composer/satis",
+        "source": "https://github.com/composer/satis",
+        "forum": "https://gitter.com/composer/satis",
+        "irc": "irc://freenode.net/composer"
     },
-    "require-dev": {
-        "composer/composer":                      "^2.6.5",
-        "doctrine/coding-standard":               "^12.0.0",
-        "ext-zip":                                "^1.15.0",
-        "roave/infection-static-analysis-plugin": "^1.33",
-        "phpunit/phpunit":                        "^9.6.13",
-        "vimeo/psalm":                            "^5.15.0"
-    },
+    "bin": [
+        "bin/satis"
+    ],
     "replace": {
-        "composer/package-versions-deprecated": "*"
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*"
+    },
+    "require": {
+        "php": "^8.1",
+        "ext-zip": "*",
+        "composer/composer": "^2.6.4",
+        "composer-plugin-api": "^2.3.0",
+        "symfony/console": "^6.3.4",
+        "twig/twig": "^3.7.1",
+        "twig/html-extra": "^3.7.1"
     },
     "autoload": {
         "psr-4": {
-            "PackageVersions\\": "src/PackageVersions"
+            "Composer\\Satis\\": "src"
         }
+    },
+    "require-dev": {
+        "ext-json": "*",
+        "mikey179/vfsstream": "^1.6.11",
+        "phpunit/phpunit": "^9.6.13"
     },
     "autoload-dev": {
         "psr-4": {
-            "PackageVersionsTest\\": "test/PackageVersionsTest"
+            "Composer\\Satis\\": "tests"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "3.0-dev"
+        },
+        "class": "Composer\\Satis\\Plugin\\SatisPlugin"
     },
     "config": {
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "infection/extension-installer": false
-        },
-        "platform": {
-            "php": "8.1.99"
+            "composer/satis": true
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "phpstan": "tools/phpstan/vendor/bin/phpstan",
+        "php-cs-fixer": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run --diff",
+        "php-cs-fixer-fix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix"
     }
 }
