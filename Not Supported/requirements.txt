@@ -1,6 +1,1 @@
-# This is a requirements.txt file for a Python project
-pip==22.1
-
-# Other packages and their versions can be listed below
-package1==1.0
-package2==2.0
+pip==22.0.4
