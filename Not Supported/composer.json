@@ -1,88 +1,82 @@
 {
-    "name": "composer/satis",
-    "description": "Simple Repository Generator",
-    "keywords": [
-        "package",
-        "repository",
-        "generator",
-        "static",
-        "composer"
-    ],
-    "homepage": "https://github.com/composer/satis",
-    "type": "composer-plugin",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Jordi Boggiano",
-            "email": "j.boggiano@seld.be",
-            "homepage": "https://seld.be"
-        },
-        {
-            "name": "Nils Adermann",
-            "email": "naderman@naderman.de",
-            "homepage": "https://www.naderman.de"
-        },
-        {
-            "name": "Rob Bast",
-            "email": "rob.bast@gmail.com",
-            "homepage": "https://robbast.nl"
-        }
-    ],
-    "support": {
-        "issues": "https://github.com/composer/satis",
-        "source": "https://github.com/composer/satis",
-        "forum": "https://gitter.com/composer/satis",
-        "irc": "irc://freenode.net/composer"
-    },
-    "bin": [
-        "bin/satis"
-    ],
-    "replace": {
-        "symfony/polyfill-php72": "*",
-        "symfony/polyfill-php73": "*",
-        "symfony/polyfill-php74": "*",
-        "symfony/polyfill-php80": "*",
-        "symfony/polyfill-php81": "*"
-    },
-    "require": {
-        "php": "^8.1",
-        "ext-zip": "*",
-        "composer/composer": "^2.6.4",
-        "composer-plugin-api": "^2.3.0",
-        "symfony/console": "^6.3.4",
-        "twig/twig": "^3.7.1",
-        "twig/html-extra": "^3.7.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "Composer\\Satis\\": "src"
-        }
-    },
-    "require-dev": {
-        "ext-json": "*",
-        "mikey179/vfsstream": "^1.6.11",
-        "phpunit/phpunit": "^9.6.13"
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Composer\\Satis\\": "tests"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-main": "3.0-dev"
-        },
-        "class": "Composer\\Satis\\Plugin\\SatisPlugin"
-    },
-    "config": {
-        "allow-plugins": {
-            "composer/satis": true
-        }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit",
-        "phpstan": "tools/phpstan/vendor/bin/phpstan",
-        "php-cs-fixer": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run --diff",
-        "php-cs-fixer-fix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix"
+  "name": "ergebnis/composer-normalize",
+  "description": "Provides a composer plugin for normalizing composer.json.",
+  "license": "MIT",
+  "type": "composer-plugin",
+  "keywords": [
+    "composer",
+    "normalizer",
+    "normalize",
+    "plugin"
+  ],
+  "authors": [
+    {
+      "name": "Andreas Möller",
+      "email": "am@localheinz.com",
+      "homepage": "https://localheinz.com"
     }
+  ],
+  "homepage": "https://github.com/ergebnis/composer-normalize",
+  "support": {
+    "issues": "https://github.com/ergebnis/composer-normalize/issues",
+    "source": "https://github.com/ergebnis/composer-normalize",
+    "security": "https://github.com/ergebnis/composer-normalize/blob/main/.github/SECURITY.md"
+  },
+  "require": {
+    "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+    "ext-json": "*",
+    "composer-plugin-api": "^2.0.0",
+    "ergebnis/json": "^1.1.0",
+    "ergebnis/json-normalizer": "^4.3.0",
+    "ergebnis/json-printer": "^3.4.0",
+    "justinrainbow/json-schema": "^5.2.12",
+    "localheinz/diff": "^1.1.1"
+  },
+  "require-dev": {
+    "composer/composer": "^2.6.5",
+    "ergebnis/license": "^2.2.0",
+    "ergebnis/php-cs-fixer-config": "~6.8.1",
+    "ergebnis/phpunit-slow-test-detector": "^2.3.2",
+    "fakerphp/faker": "^1.23.0",
+    "infection/infection": "~0.27.6",
+    "phpunit/phpunit": "^10.4.1",
+    "psalm/plugin-phpunit": "~0.18.4",
+    "rector/rector": "~0.18.6",
+    "symfony/filesystem": "^6.0.13",
+    "vimeo/psalm": "^5.15.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "Ergebnis\\Composer\\Normalize\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Ergebnis\\Composer\\Normalize\\Test\\": "test/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true,
+      "infection/extension-installer": true
+    },
+    "audit": {
+      "abandoned": "report"
+    },
+    "platform": {
+      "php": "8.1.20"
+    },
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "extra": {
+    "class": "Ergebnis\\Composer\\Normalize\\NormalizePlugin",
+    "composer-normalize": {
+      "indent-size": 2,
+      "indent-style": "space"
+    },
+    "plugin-optional": true
+  }
 }
